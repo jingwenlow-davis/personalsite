@@ -1,0 +1,246 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
+@import 'https://fonts.googleapis.com/css?family=Lato';
+$gutter: 15px;
+$animate: all 0.2s ease-in-out;
+$rounded: 4px;
+$col1: desaturate(#FF22CC, 40%);
+$col2: desaturate(#EE0088, 40%);
+$col3: desaturate(#DD33AA, 40%);
+$col4: desaturate(#AA3399, 40%);
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(#444 -50%, #000 150%);
+  font-family: "Montserrat", sans-serif;
+}
+
+hr {
+  border: none;
+  float: left;
+  width: calc(100% + #{$gutter*2});
+  height: 1px;
+  background-color: darken(white, 10%);
+  margin: 15px 0 20px;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0 0;
+  padding: 10px 15px;
+}
+
+h1 {
+  font-size: 36px;
+  padding: 0;
+  float: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+header {
+  float: left;
+  width: calc(100% + #{$gutter*2});
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  margin-bottom: $gutter;
+  background-color: black;
+  .logo {
+    float: left;
+    font: 0/0 a;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/448277/codepen-logo-9c0933e8569e634b75ac2eb808da908d.svg) no-repeat 18px 21px;
+    background-size: 138px 24px;
+    background-color: black;
+    width: 180px;
+    height: 65px;
+    border: 0;
+    outline: 0;
+    position: relative;
+    z-index: 99999;
+  }
+  .author {
+    float: right;
+    color: white;
+    line-height: 21px + 21px + 24px;
+    margin: 0 $gutter 0 0;
+    font-size: 95%;
+    a {
+      color: darken(white, 25%);
+      transition: $animate;
+      text-decoration: none;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+section {
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
+  float: left;
+  min-height: 100%;
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0 $gutter $gutter*2;
+  background-color: white;
+  h3 {
+    background-color: #000;
+    color: white;
+    float: left;
+    clear: both;
+    border-top-left-radius: $rounded;
+    border-top-right-radius: $rounded;
+    position: relative;
+    text-shadow: 2px 3px 0px rgba(0, 0, 0, .2);
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      right: -4px;
+      top: 4px;
+      z-index: -1;
+      border-radius: inherit;
+      opacity: 0.5;
+    }
+    &.varient-1 {
+      background-color: $col1;
+      &:after {
+        background-color: darken($col1, 10%);
+      }
+    }
+    &.varient-2 {
+      background-color: $col2;
+      &:after {
+        background-color: darken($col2, 10%);
+      }
+    }
+    &.varient-3 {
+      background-color: $col3;
+      &:after {
+        background-color: darken($col3, 10%);
+      }
+    }
+    &.varient-4 {
+      background-color: $col4;
+      &:after {
+        background-color: darken($col4, 10%);
+      }
+    }
+    & + div {
+      width: 100%;
+      height: 250px;
+      float: left;
+      margin: 0 0 $gutter;
+      background-color: darken(white, 10%);
+      border-top-right-radius: $rounded;
+      border-bottom-right-radius: $rounded;
+      border-bottom-left-radius: $rounded;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      span {
+        font-size: 5vw;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: darken(white, 10%);
+        transition: $animate;
+        position: relative;
+        @media screen and (min-width: 992px) {
+          font-size: 36px;
+        }
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          width: 0px;
+          height: 5px;
+          margin: 5px 0 0;
+          transition: $animate;
+          transition-duration: 0.75s;
+          opacity: 0;
+        }
+        &.hover-1 {
+          &:after {
+            left: 0;
+            background-color: $col1;
+          }
+        }
+        &.hover-2 {
+          &:after {
+            right: 0;
+            background-color: $col2;
+          }
+        }
+        &.hover-3 {
+          &:before {
+            left: calc(50%);
+            //width: 50%;
+            background-color: $col3;
+          }
+          &:after {
+            right: calc(50%);
+            //width: 50%;
+            background-color: $col3;
+          }
+        }
+        &.hover-4 {
+          &:before {
+            left: 0;
+            //width: 50%;
+            background-color: $col4;
+          }
+          &:after {
+            right: 0;
+            //width: 50%;
+            background-color: $col4;
+          }
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        span {
+          &:before,
+          &:after {
+            width: 100%;
+            opacity: 1;
+          }
+          &.hover-3,
+          &.hover-4 {
+            &:before,
+            &:after {
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
